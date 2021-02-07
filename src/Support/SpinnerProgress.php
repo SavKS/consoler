@@ -3,8 +3,6 @@
 namespace Savks\Consoler\Support;
 
 use Illuminate\Support\Str;
-use Symfony\Component\Console\Helper\ProgressBar;
-use Symfony\Component\Console\Output\ConsoleOutput;
 use Symfony\Component\Console\Output\OutputInterface;
 
 class SpinnerProgress extends BaseInlineProgress
@@ -108,6 +106,14 @@ class SpinnerProgress extends BaseInlineProgress
         }
 
         parent::finish();
+    }
+
+    /**
+     * @return void
+     */
+    public function success(): void
+    {
+        $this->finish();
     }
 
     /**

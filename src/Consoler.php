@@ -4,10 +4,14 @@ namespace Savks\Consoler;
 
 use Illuminate\Console\OutputStyle;
 use ReflectionObject;
-use Savks\Consoler\Support\SpinnerProgress;
-use Savks\Consoler\Support\TextProgress;
-use Symfony\Component\Console\Output\ConsoleOutput;
-use Symfony\Component\Console\Output\OutputInterface;
+use Savks\Consoler\Support\{
+    Format,
+    SpinnerProgress,
+    TextProgress};
+use Symfony\Component\Console\Output\{
+    ConsoleOutput,
+    OutputInterface
+};
 
 class Consoler
 {
@@ -74,5 +78,52 @@ class Consoler
             $showImmediately,
             $this->output
         );
+    }
+
+    /**
+     * @param string $text
+     * @return Format
+     */
+    public function format(string $text): Format
+    {
+        return Format::for($text);
+    }
+
+    /**
+     * @param string $format
+     * @param mixed ...$values
+     */
+    public function formatWriteToOutput(string $format, ...$values): void
+    {
+        $this->output->write(
+            sprintf($format, ...$values)
+        );
+    }
+
+    /**
+     * @param string $format
+     * @param mixed ...$values
+     */
+    public function formatWritelnToOutput(string $format, ...$values): void
+    {
+        $this->output->writeln(
+            sprintf($format, ...$values)
+        );
+    }
+
+    /**
+     * @param string $message
+     */
+    public function writeToOutput(string $message): void
+    {
+        $this->output->write($message);
+    }
+
+    /**
+     * @param string $message
+     */
+    public function writelnToOutput(string $message): void
+    {
+        $this->output->writeln($message);
     }
 }
