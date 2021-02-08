@@ -45,9 +45,9 @@ class SpinnerProgress extends BaseInlineProgress
             $format = "%spinner% {$format}";
         }
 
-        $format = str_replace('%spinner%', '%bar%', $format);
-
-        return parent::setFormat($format);
+        return parent::setFormat(
+            str_replace('%spinner%', '%bar%', $format)
+        );
     }
 
     /**

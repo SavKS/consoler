@@ -58,9 +58,7 @@ abstract class BaseInlineProgress
      */
     public function setFormat(string $format)
     {
-        $this->progressBar->setFormat(
-            str_replace('%spinner%', '%bar%', $format)
-        );
+        $this->progressBar->setFormat($format);
 
         return $this;
     }
