@@ -4,7 +4,6 @@ namespace Savks\Consoler\Support;
 
 use BadMethodCallException;
 use Illuminate\Support\Str;
-use Symfony\Component\Console\Output\OutputInterface;
 
 /**
  * Class Formatter
